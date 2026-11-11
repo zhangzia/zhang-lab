@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="510" viewBox="0 0 560 510" role="img" aria-labelledby="title desc">
+  <title id="title">An interconnected energy system</title>
+  <desc id="desc">A conceptual network linking an Energy Storage System, a Synchronous Generator, and an Inverter Based Resource. Decorative illustration, not measured data.</desc>
+  <defs><radialGradient id="glow"><stop stop-color="#E2F3DB"/><stop offset="1" stop-color="#FFFFFF"/></radialGradient></defs>
+  <rect width="560" height="510" fill="url(#glow)"/>
+  <g fill="none" stroke="#BDBEBD" stroke-width="1">
+    <circle cx="280" cy="255" r="185"/><circle cx="280" cy="255" r="122" stroke-dasharray="3 7"/>
+    <path d="M105 190 175 111 365 88 455 199 432 367 258 438 122 356Z M175 111 280 255 455 199 M365 88 280 255 432 367 M105 190 280 255 258 438 M122 356 280 255 M175 111 455 199 M122 356 432 367 M105 190 432 367 M365 88 258 438"/>
+  </g>
+  <g fill="#FFFFFF" stroke="#6CC24A" stroke-width="1.5"><circle cx="175" cy="111" r="8"/><circle cx="365" cy="88" r="6"/><circle cx="455" cy="199" r="8"/><circle cx="432" cy="367" r="7"/><circle cx="258" cy="438" r="6"/><circle cx="122" cy="356" r="8"/><circle cx="105" cy="190" r="6"/></g>
+  <circle cx="280" cy="255" r="53" fill="#005A43"/>
+  <g fill="none" stroke="#FFFFFF" stroke-width="1.8"><path d="M253 258c10-23 15-23 27 0s17 23 27 0"/><circle cx="280" cy="255" r="34" stroke-opacity=".25"/></g>
+  <g font-family="Segoe UI,Arial,sans-serif">
+    <g transform="translate(56 217)" aria-label="Energy Storage System">
+      <rect width="128" height="88" rx="3" fill="#FFFFFF" stroke="#DEDEDE"/>
+      <rect x="54" y="12" width="21" height="31" rx="2" fill="none" stroke="#005A43" stroke-width="1.8"/>
+      <path d="M60 9h9M58 20h13M58 26h13M58 32h13M58 38h13" stroke="#005A43" stroke-width="2"/>
+      <text x="64" y="62" text-anchor="middle" font-size="14" font-weight="700" fill="#005A43"><tspan x="64">Energy Storage</tspan><tspan x="64" dy="17">System</tspan></text>
+    </g>
+    <g transform="translate(349 129)" aria-label="Inverter Based Resource">
+      <rect width="130" height="88" rx="3" fill="#FFFFFF" stroke="#DEDEDE"/>
+      <g fill="none" stroke="#005A43" stroke-width="1.5">
+        <rect x="49" y="13" width="32" height="26" rx="2"/>
+        <path d="M51 37 79 15M41 26h8M81 26h8M53 19h9M53 23h9M67 31c2-5 4-5 6 0s4 5 6 0"/>
+      </g>
+      <text x="65" y="62" text-anchor="middle" font-size="14" font-weight="700" fill="#005A43"><tspan x="65">Inverter Based</tspan><tspan x="65" dy="17">Resource</tspan></text>
+    </g>
+    <g transform="translate(313 343)" aria-label="Synchronous Generator">
+      <rect width="128" height="88" rx="3" fill="#FFFFFF" stroke="#DEDEDE"/>
+      <circle cx="64" cy="27" r="14" fill="none" stroke="#005A43" stroke-width="1.8"/>
+      <path d="M54 27c4-10 6-10 10 0s6 10 10 0" fill="none" stroke="#005A43" stroke-width="1.8"/>
+      <text x="64" y="62" text-anchor="middle" font-size="14" font-weight="700" fill="#005A43"><tspan x="64">Synchronous</tspan><tspan x="64" dy="17">Generator</tspan></text>
+    </g>
+    <text x="280" y="34" text-anchor="middle" font-size="9" fill="#5A5C5B" letter-spacing="2">AN INTERCONNECTED ENERGY SYSTEM</text>
+  </g>
+</svg>

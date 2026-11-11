@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  
+  <meta name="description" content="Explore how the unsubsidized levelized cost of electricity changed from 2009 to 2026, using Lazard's published data.">
+  <title>Cost of Electricity Explorer · Zhang Research Group</title>
+  <link rel="stylesheet" href="lcoe.css">
+  <script src="lcoe-data.js?v=2" defer></script><script src="lcoe-app.js?v=2" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to explorer</a>
+<header class="topbar"><a href="education.html#interactive-learning">← Education / Interactive learning</a><span>Zhang Research Group <b>·</b> Binghamton University</span></header>
+<main id="main">
+  <div class="intro"><div><p class="eyebrow">EECE 443 · Economics of generation</p><h1>What does electricity cost?</h1><p class="lede">Explore the levelized cost of energy: the lifetime cost of building and operating a power plant, per unit of electricity generated.</p></div><div class="intro-mark" aria-hidden="true">LCOE<span>$/MWh</span></div></div>
+  <section class="explorer" aria-label="Interactive levelized cost explorer">
+    <aside class="controls">
+      <p class="eyebrow">Travel through the data</p>
+      <label for="year">Report year</label>
+      <div class="year-line"><output id="year-display" for="year">2026</output><span id="version">Lazard v19.0</span></div>
+      <input id="year" type="range" min="0" max="16" value="16" step="1" aria-describedby="year-help" aria-valuetext="2026">
+      <div class="range-endpoints"><span>2009</span><span>2026</span></div>
+      <div class="playback"><button id="previous" type="button" aria-label="Previous available year">←</button><button id="play" type="button" aria-pressed="false">▶ Play years</button><button id="next" type="button" aria-label="Next available year">→</button></div>
+      <p id="year-help" class="small">17 report years. The source has no 2022 observation; the slider moves directly from 2021 to 2023.</p>
+      <label class="field-label" for="sort">Order technologies</label>
+      <select id="sort"><option value="original">Lecture figure order</option><option value="cost">Lowest midpoint first</option></select>
+      <label class="check"><input id="existing" type="checkbox" checked> Show existing gas comparison</label>
+      <div class="reading-guide"><h2>How to read the chart</h2><p><span class="sample-range" aria-hidden="true"></span> Bar = published low–high range</p><p><span class="sample-point" aria-hidden="true">◆</span> Diamond = published midpoint only</p><p class="small">A midpoint is the center of a cost range, not a forecast or an electricity market price.</p></div>
+      <button id="download" class="download" type="button">Download all years · CSV ↓</button>
+    </aside>
+    <div class="plot-panel">
+      <div class="plot-heading"><div><p class="eyebrow">Unsubsidized generation costs</p><h2>Cost of new generation <span id="chart-year">2026</span></h2></div><span class="units">US dollars / MWh</span></div>
+      <p id="coverage" class="coverage" aria-live="polite"></p>
+      <div id="chart" class="chart" role="img" aria-label="Generation cost comparison"></div>
+      <p class="axis-caption">Levelized cost of energy ($/MWh) <span id="axis-scale-note">Same scale in every year</span></p>
+      <p id="comparison-note" class="comparison-note">The existing gas row shows the marginal cost of operating a fully depreciated plant. It excludes the original construction investment and is a separate comparison.</p>
+      <div class="takeaways"><div><span>Utility solar vs. 2009</span><strong id="solar-change"></strong><small>change in range midpoint</small></div><div><span>Onshore wind vs. 2009</span><strong id="wind-change"></strong><small>change in range midpoint</small></div></div>
+    </div>
+  </section>
+  <details class="data-details"><summary>View selected-year data and source pages</summary><p id="selected-source"></p><p id="selected-notes" class="small"></p><div class="table-scroll"><table><caption id="table-caption">2026 cost data ($/MWh)</caption><thead><tr><th scope="col">Technology</th><th scope="col">Low</th><th scope="col">High</th><th scope="col">Midpoint</th><th scope="col">Source</th></tr></thead><tbody id="data-table"></tbody></table></div></details>
+  <section class="notes" aria-labelledby="notes-title"><div><p class="eyebrow">A useful comparison, with boundaries</p><h2 id="notes-title">Energy cost is one part of the picture.</h2><p>These are generation cost estimates, not retail bills or a measure of round-the-clock reliability. Storage, firming, transmission, grid integration and environmental impacts can change a system-level comparison. Values are shown as reported, without converting all years to constant dollars.</p></div><div><h3>Data &amp; coverage</h3><p>Every selected year includes the six core technologies: onshore wind, utility solar, combined-cycle gas, coal, gas peakers and nuclear. Offshore wind is not reported in 2009, has reported midpoints in 2010–2011, and has full ranges from 2012 onward. Each value links to its annual report and source page in the data table.</p><p>The existing-gas operating-cost comparison starts in 2020. Earlier years are marked “not reported.” Report year 2022 is absent from the source series. No costs are interpolated or carried across years.</p><p class="small">Annual reports change financing, fuel prices, geography and technology assumptions. Early editions have broader illustrative scopes; recent editions focus on the U.S. Solar uses the crystalline utility-scale series where editions distinguish technologies. Some coal high cases include carbon capture; nuclear methods also change. Read the selected-year notes before comparing years. 2026 source: <a href="https://www.lazard.com/media/kcfconhf/lazards-lcoeplus_vf.pdf" target="_blank" rel="noopener">Lazard v19.0 ↗</a>.</p></div></section>
+  <footer><span>EECE 443 · Fundamentals of Power Systems</span><a href="education.html#interactive-learning">Back to interactive learning ↑</a></footer>
+  <noscript><p>This explorer requires JavaScript. The linked Lazard report contains the underlying charts.</p></noscript>
+</main>
+</body>
+</html>

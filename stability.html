@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Explore fault clearing, inertia, and rotor-angle stability with a classical single-machine teaching model.">
+<title>Power System Stability Explorer</title>
+<link rel="stylesheet" href="stability.css">
+<link rel="stylesheet" href="stability-layout.css">
+<script src="stability-model.js" defer></script>
+<script src="stability-app.js" defer></script>
+<script src="stability-layout.js" defer></script>
+<style>.skip{position:absolute;left:12px;top:-100px;background:white;padding:12px;z-index:9}.skip:focus{top:10px}.education-return{display:inline-block;margin:0 0 20px;font-size:12px}body.embedded .education-return{display:none}body.embedded main{padding:18px 8px;max-width:1060px}body.embedded footer{display:none}body.embedded header{margin-bottom:10px}body.embedded .circuit{padding-bottom:18px}</style><script src="embed.js" defer></script></head>
+<body>
+<a class="skip" href="#main">Skip to experiment</a><main id="main">
+  <header>
+    <a class="education-return" href="education.html#interactive-learning">← Education / Interactive learning</a><div class="eyebrow">Zhang Research Group · Interactive education</div>
+    <div class="title-row"><h1>Can the generator stay in step?</h1><span class="tag">Classical model</span></div>
+    <p class="intro">A fault interrupts power transfer. Clear it early enough and the rotor keeps swinging around its operating point. Leave it too long and it loses synchronism.</p>
+  </header>
+
+  <div class="circuit" aria-label="A synchronous generator connected through a transmission line to an infinite bus. A fault temporarily sets electrical power to zero.">
+    <span class="machine">G</span><span>Generator</span><span class="wire"></span><span class="fault">Fault → clear</span><span class="wire"></span><span class="bus"></span><span>Infinite bus<br><small>60 Hz</small></span>
+  </div>
+
+  <section aria-labelledby="experiment-title">
+    <div class="section-top"><h2 id="experiment-title">Try an experiment</h2><div class="presets" aria-label="Example scenarios"><button type="button" data-preset="fast">Fast clearing</button><button type="button" data-preset="near">Near the limit</button><button type="button" data-preset="slow">Slow clearing</button><button type="button" id="reset">Reset</button></div></div>
+    <div class="controls">
+      <label for="clear"><span>Fault clearing time <output id="clear-value" for="clear"></output></span><input id="clear" type="range" min="0" max="0.6" step="0.005" value="0.15"><small>Time after the fault begins</small></label>
+      <label for="H"><span>Inertia constant H <output id="H-value" for="H"></output></span><input id="H" type="range" min="2" max="10" step="0.5" value="5"><small>Stored rotational energy per machine rating</small></label>
+      <label for="pm"><span>Mechanical input Pₘ <output id="pm-value" for="pm"></output></span><input id="pm" type="range" min="0.4" max="1.2" step="0.02" value="0.8"><small>Loading before the fault, in per unit</small></label>
+      <label for="post"><span>Post-fault transfer limit <output id="post-value" for="post"></output></span><input id="post" type="range" min="1.25" max="2" step="0.05" value="1.5"><small>Network strength after clearing, in per unit</small></label>
+    </div>
+  </section>
+
+  <section class="result" aria-live="polite" aria-atomic="true">
+    <div><span class="result-label">Equal-area prediction</span><h2 id="outcome"></h2><p id="explanation"></p></div>
+    <div class="limit"><span>Critical clearing time</span><strong id="critical"></strong><span id="initial"></span></div>
+  </section>
+
+  <section aria-labelledby="response-title">
+    <div class="section-top"><h2 id="response-title">Rotor angle over time</h2><span class="subtle">Fault starts at 0 s · No damping</span></div>
+    <div id="time-chart" class="chart"></div>
+    <div class="legend"><span><i class="key angle"></i>Rotor angle δ</span><span><i class="key boundary"></i>Post-fault unstable equilibrium</span><span><i class="shade"></i>Fault-on interval</span></div>
+  </section>
+
+  <section aria-labelledby="energy-title">
+    <div class="section-top"><h2 id="energy-title">Where does the accelerating energy go?</h2></div>
+    <div id="power-chart" class="chart"></div>
+    <div class="legend"><span><i class="shade accel"></i>Accelerating area</span><span><i class="shade decel"></i>Available decelerating area</span><span><i class="key boundary"></i>Mechanical input Pₘ</span></div>
+    <p class="chart-note" id="area-note"></p>
+  </section>
+
+  <section class="learning" aria-labelledby="try-title"><h2 id="try-title">Predict, change, explain</h2><ol><li>Increase clearing time until the first swing escapes. Where is the boundary?</li><li>Double H. How much more clearing time does the model allow?</li><li>Reduce the post-fault transfer limit. Does a faster breaker compensate for a weaker network?</li></ol></section>
+
+  <details><summary>Model, assumptions, and sources</summary><div class="details-body"><p>A classical synchronous generator connected to an ideal infinite bus. All powers share the machine MVA base. Electrical frequency is 60 Hz; pre-fault Pmax = 2 pu. The fault starts at t = 0 and forces electrical power to zero. Clearing switches instantaneously to the selected post-fault network.</p><p class="formula">dδ/dt = Δω<br>dΔω/dt = (2πf / 2H) [Pₘ − Pmax sin(δ)]</p><p>δ is electrical radians; Δω is the electrical angular-speed deviation in rad/s. Pmax = 0 during the fault. Initial conditions are δ₀ = asin(Pₘ / 2), Δω₀ = 0. The equal-area boundary gives the critical clearing angle; constant fault-on acceleration then gives the critical clearing time. Post-fault trajectories use fourth-order Runge–Kutta with a 1 ms step and an 8 s horizon. The chart ends early if the angle exceeds one full revolution.</p><p>Stable means a bounded first swing in this ideal undamped model; oscillations do not decay. This tool does not model excitation, governors, inverter controls, storage dynamics, or a real multi-machine network. A weaker post-fault network can be unstable even with immediate clearing.</p><p>Learning references: <a href="https://archive.nptel.ac.in/content/storage2/courses/108104051/chapter_9/9_3.html" target="_blank" rel="noopener">NPTEL: swing equation</a> · <a href="https://archive.nptel.ac.in/content/storage2/courses/108104051/chapter_9/9_4a.html" target="_blank" rel="noopener">NPTEL: equal-area criterion</a>.</p></div></details>
+  <footer><a href="education.html#interactive-learning">Return to interactive learning ↗</a><span>Classical rotor-angle stability</span></footer>
+</main>
+</body>
+</html>
