@@ -26,6 +26,11 @@
 .training-facts{grid-template-columns:repeat(2,minmax(0,1fr))}.publication-list,.news-list{margin-bottom:35px}
 
 .hero-topics.research-interests{display:grid;gap:7px;margin-top:10px}
+@media (min-width: 801px) {
+  #interactive-learning .tool-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
 
 /* Research evidence and invitations. */
 .focus-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:0}.focus-item h3{line-height:1.2}.focus-item .item-arrow{display:inline-block}

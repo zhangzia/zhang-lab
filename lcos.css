@@ -1,0 +1,37 @@
+.storage-explorer .reading-guide {
+  margin-top: 20px;
+}
+.storage-explorer .chart-row {
+  padding-block: 7px;
+}
+.storage-explorer .tech-name small {
+  font-size: 11px;
+}
+.storage-explorer .coverage {
+  font-size: 12px;
+}
+.storage-explorer .takeaways[hidden] {
+  display: none;
+}
+.storage-explorer tbody th small {
+  display: block;
+  font-weight: normal;
+}
+@media (min-width: 1001px) {
+  .storage-explorer .chart-header,
+  .storage-explorer .chart-row,
+  .storage-explorer .chart-axis {
+    grid-template-columns: 195px minmax(0, 1fr) 88px;
+  }
+}
+@media (max-width: 760px) {
+  .storage-explorer .controls > .check {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    margin-top: 14px;
+  }
+  .storage-explorer .tech-name small {
+    font-size: 10px;
+  }
+}
+
