@@ -79,3 +79,10 @@
   }
 }
 
+.storage-explorer.embedded main {
+  max-width: none;
+  padding-inline: 0;
+}
+.storage-explorer.embedded .standalone-only {
+  display: none;
+}

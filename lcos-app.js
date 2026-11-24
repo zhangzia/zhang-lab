@@ -5,6 +5,7 @@
   const byId = id => document.getElementById(id);
   const slider = byId('year');
   const params = new URLSearchParams(location.search);
+  if (params.has('embed')) document.body.classList.add('embedded');
   const requestedIndex = reports.findIndex(report => report.year === Number(params.get('year')));
   slider.max = reports.length - 1;
   slider.value = requestedIndex === -1 ? slider.max : requestedIndex;

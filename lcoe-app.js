@@ -92,5 +92,24 @@
   }
   if(typeof ResizeObserver!=='undefined')new ResizeObserver(reportHeight).observe(document.body);
   window.addEventListener('load',reportHeight);
+  const storageFrame = $('storage-explorer-frame');
+  if (storageFrame && !params.has('embed')) {
+    let storageObserver;
+    const fitStorageFrame = () => {
+      storageObserver?.disconnect();
+      const content = storageFrame.contentDocument?.querySelector('main');
+      if (!content) return;
+      const resize = () => {
+        storageFrame.style.height = Math.ceil(content.getBoundingClientRect().height) + 'px';
+      };
+      resize();
+      if (typeof ResizeObserver !== 'undefined') {
+        storageObserver = new ResizeObserver(resize);
+        storageObserver.observe(content);
+      }
+    };
+    storageFrame.addEventListener('load', fitStorageFrame);
+    fitStorageFrame();
+  }
   render();
 })();
