@@ -16,6 +16,20 @@
   const escape = value => String(value).replace(/[&<>"']/g, character => ({
     '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
   }[character]));
+  const slots = [
+    { id: 'utility1', name: 'Utility standalone · 1 h', type: 'utility' },
+    { id: 'utility2', name: 'Utility standalone · 2 h', type: 'utility' },
+    { id: 'utility4', name: 'Utility standalone · 4 h', type: 'utility' },
+    { id: 'commercial', name: 'Commercial standalone', type: 'commercial' },
+    { id: 'residential', name: 'Residential standalone', type: 'residential' },
+    { id: 'utilitySolar', name: 'Utility solar + storage', type: 'solar' },
+    { id: 'commercialSolar', name: 'Commercial solar + storage', type: 'solar' },
+    { id: 'residentialSolar', name: 'Residential solar + storage', type: 'solar' },
+    { id: 'utilityWind', name: 'Utility wind + storage', type: 'wind' }
+  ];
+  const lowCycleSlot = { id: 'lowCycle', name: 'Transmission & distribution', type: 'grid' };
+  const chart = byId('chart');
+  let chartRows = [];
 
   // Use one scale for all report years in each comparison mode.
   function scaleFor(includeLowCycle) {
@@ -32,16 +46,36 @@
     return `<a href="${href}" target="_blank" rel="noopener">LCOS v${report.version}.0 · p. ${citation.page}</a>`;
   };
 
+  function prepareChart() {
+    const includeLowCycle = byId('low-cycle').checked;
+    const scale = includeLowCycle ? expandedScale : standardScale;
+    const visibleSlots = includeLowCycle ? [...slots, lowCycleSlot] : slots;
+    const markup = visibleSlots.map(slot => `<div class="chart-row" data-slot="${slot.id}" data-type="${slot.type}">
+      <span class="tech-name"><span class="case-color" aria-hidden="true"></span><span>${escape(slot.name)}<small></small></span></span>
+      <div class="track"><span class="bar" hidden></span></div>
+      <span class="cost-value"></span>
+    </div>`);
+    const ticks = Array.from({ length: 5 }, (_, i) =>
+      `<span style="left:${25 * i}%">${fmt.format(i * scale / 4)}</span>`);
+    chart.innerHTML = '<div class="chart-header"><span>Storage case</span><span></span><span>$/MWh</span></div>'
+      + markup.join('') + '<div class="chart-axis"><span></span><div class="ticks">'
+      + ticks.join('') + '</div><span></span></div>';
+    chartRows = visibleSlots.map(slot => {
+      const element = chart.querySelector(`[data-slot="${slot.id}"]`);
+      return { slot, detail: element.querySelector('small'), bar: element.querySelector('.bar'),
+        value: element.querySelector('.cost-value') };
+    });
+    byId('comparison-note').hidden = !includeLowCycle;
+    byId('axis-scale-note').textContent = `Same 0–${fmt.format(scale)} scale in every year`;
+  }
+
   function render() {
     const index = Number(slider.value);
     const report = reports[index];
     const { year } = report;
     const includeLowCycle = byId('low-cycle').checked;
     const scale = includeLowCycle ? expandedScale : standardScale;
-    const visibleCases = report.cases.filter(item => includeLowCycle || !item.lowCycle);
-    const cases = byId('sort').value === 'cost'
-      ? visibleCases.sort((a, b) => midpoint(a) - midpoint(b))
-      : visibleCases;
+    const casesBySlot = new Map(report.cases.map(item => [item.chartSlot, item]));
 
     byId('year-display').value = year;
     byId('chart-year').textContent = year;
@@ -49,42 +83,39 @@
     slider.setAttribute('aria-valuetext', String(year));
     byId('previous').disabled = index === 0;
     byId('next').disabled = index === reports.length - 1;
-    byId('coverage').textContent = `${cases.length} published ranges · ${report.summary}`;
-    byId('comparison-note').hidden = !cases.some(item => item.lowCycle);
+    const reportedCount = chartRows.filter(row => casesBySlot.has(row.slot.id)).length;
+    byId('coverage').textContent = `${reportedCount} of ${chartRows.length} chart cases reported`;
 
-    const chartRows = cases.map(item => {
-      const color = item.benchmark ? '#005a43' : '#397ea7';
-      const left = 100 * item.low / scale;
-      const width = 100 * (item.high - item.low) / scale;
-      return `<div class="chart-row" style="--bar-color:${color}">
-        <span class="tech-name">${escape(item.name)}<small>${escape(item.detail)}${item.lowCycle ? ' · 25 cycles/year' : ''}</small></span>
-        <div class="track"><span class="bar" style="left:${left}%;width:${width}%"></span></div>
-        <span class="cost-value">${fmt.format(item.low)}–${fmt.format(item.high)}</span>
-      </div>`;
+    const descriptions = chartRows.map(({ slot, detail, bar, value }) => {
+      const item = casesBySlot.get(slot.id);
+      detail.textContent = item?.chartDetail ?? '';
+      bar.hidden = !item;
+      value.textContent = item ? `${fmt.format(item.low)}–${fmt.format(item.high)}` : '—';
+      value.title = item ? '' : 'Not reported';
+      if (item) {
+        bar.style.left = `${100 * item.low / scale}%`;
+        bar.style.width = `${100 * (item.high - item.low) / scale}%`;
+        return `${slot.name}, ${item.chartDetail}: ${item.low} to ${item.high}`;
+      }
+      return `${slot.name}: not reported`;
     });
-    const ticks = Array.from({ length: 5 }, (_, i) =>
-      `<span style="left:${25 * i}%">${fmt.format(i * scale / 4)}</span>`);
-    const chart = byId('chart');
-    chart.innerHTML = '<div class="chart-header"><span>Storage case</span><span></span><span>$/MWh</span></div>'
-      + chartRows.join('') + '<div class="chart-axis"><span></span><div class="ticks">'
-      + ticks.join('') + '</div><span></span></div>';
-    chart.setAttribute('aria-label', `Storage costs in ${year}, US dollars per MWh. `
-      + cases.map(item => `${item.name}, ${item.detail}: ${item.low} to ${item.high}`).join('. '));
-    byId('axis-scale-note').textContent = `Same 0–${fmt.format(scale)} scale in every year`;
+    chart.setAttribute('aria-label', `Storage costs in ${year}, US dollars per MWh. ${descriptions.join('. ')}`);
 
-    const benchmark = cases.find(item => item.benchmark);
-    byId('benchmark').hidden = !benchmark || !baseline;
+    const benchmark = report.cases.find(item => item.benchmark);
     if (benchmark && baseline) {
       const value = midpoint(benchmark);
       const change = Math.round((value / midpoint(baseline) - 1) * 100);
       byId('utility-midpoint').textContent = fmt.format(value);
       byId('utility-change').textContent = (change > 0 ? '+' : change < 0 ? '−' : '') + Math.abs(change) + '%';
+    } else {
+      byId('utility-midpoint').textContent = '—';
+      byId('utility-change').textContent = '—';
     }
 
     byId('selected-source').innerHTML = sourceLink(report);
-    byId('selected-notes').textContent = report.note;
+    byId('selected-notes').textContent = `${report.summary} ${report.note}`;
     byId('table-caption').textContent = `${year} storage cost data ($/MWh)`;
-    byId('data-table').innerHTML = cases.map(item => `<tr>
+    byId('data-table').innerHTML = report.cases.map(item => `<tr>
       <th scope="row">${escape(item.name)}<small>${escape(item.assumptions || item.detail)}</small></th>
       <td>${fmt.format(item.low)}</td><td>${fmt.format(item.high)}</td>
       <td>${fmt.format(midpoint(item))}</td><td>${sourceLink(report, item)}</td>
@@ -109,8 +140,7 @@
   }
 
   slider.addEventListener('input', () => { stop(); render(); });
-  byId('sort').addEventListener('change', render);
-  byId('low-cycle').addEventListener('change', render);
+  byId('low-cycle').addEventListener('change', () => { prepareChart(); render(); });
   byId('previous').addEventListener('click', () => step(-1));
   byId('next').addEventListener('click', () => step(1));
   byId('play').addEventListener('click', () => {
@@ -145,6 +175,7 @@
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   });
 
+  prepareChart();
   render();
 })();
 

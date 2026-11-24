@@ -25,7 +25,9 @@ window.LCOSReports = [
         "low": 321,
         "high": 658,
         "page": 9,
-        "pdfPage": 10
+        "pdfPage": 10,
+        "chartSlot": "utility4",
+        "chartDetail": "25 MW"
       },
       {
         "name": "Distribution Services",
@@ -52,7 +54,9 @@ window.LCOSReports = [
         "low": 351,
         "high": 838,
         "page": 10,
-        "pdfPage": 11
+        "pdfPage": 11,
+        "chartSlot": "commercial",
+        "chartDetail": "1 MW · 4 h"
       },
       {
         "name": "Residential",
@@ -61,7 +65,9 @@ window.LCOSReports = [
         "low": 1034,
         "high": 1596,
         "page": 10,
-        "pdfPage": 11
+        "pdfPage": 11,
+        "chartSlot": "residential",
+        "chartDetail": "5 kW · 2 h"
       }
     ]
   },
@@ -90,7 +96,9 @@ window.LCOSReports = [
         "low": 285,
         "high": 581,
         "page": 11,
-        "pdfPage": 15
+        "pdfPage": 15,
+        "chartSlot": "utility4",
+        "chartDetail": "100 MW"
       },
       {
         "name": "Distribution Substation",
@@ -117,7 +125,9 @@ window.LCOSReports = [
         "low": 530,
         "high": 1142,
         "page": 12,
-        "pdfPage": 16
+        "pdfPage": 16,
+        "chartSlot": "commercial",
+        "chartDetail": "0.5 MW · 4 h"
       },
       {
         "name": "Residential",
@@ -126,7 +136,9 @@ window.LCOSReports = [
         "low": 890,
         "high": 1476,
         "page": 12,
-        "pdfPage": 16
+        "pdfPage": 16,
+        "chartSlot": "residential",
+        "chartDetail": "5 kW · 2 h"
       }
     ]
   },
@@ -146,7 +158,9 @@ window.LCOSReports = [
         "low": 282,
         "high": 347,
         "page": 12,
-        "pdfPage": 17
+        "pdfPage": 17,
+        "chartSlot": "utility4",
+        "chartDetail": "100 MW"
       },
       {
         "name": "Distribution",
@@ -173,7 +187,9 @@ window.LCOSReports = [
         "low": 891,
         "high": 985,
         "page": 12,
-        "pdfPage": 17
+        "pdfPage": 17,
+        "chartSlot": "commercial",
+        "chartDetail": "125 kW · 2 h"
       },
       {
         "name": "Residential",
@@ -182,7 +198,9 @@ window.LCOSReports = [
         "low": 1028,
         "high": 1274,
         "page": 12,
-        "pdfPage": 17
+        "pdfPage": 17,
+        "chartSlot": "residential",
+        "chartDetail": "5 kW · 2 h"
       }
     ]
   },
@@ -202,7 +220,9 @@ window.LCOSReports = [
         "low": 204,
         "high": 298,
         "page": 11,
-        "pdfPage": 19
+        "pdfPage": 19,
+        "chartSlot": "utility4",
+        "chartDetail": "100 MW"
       },
       {
         "name": "Transmission and Distribution",
@@ -220,7 +240,9 @@ window.LCOSReports = [
         "low": 108,
         "high": 140,
         "page": 11,
-        "pdfPage": 19
+        "pdfPage": 19,
+        "chartSlot": "utilitySolar",
+        "chartDetail": "20 MW · 4 h"
       },
       {
         "name": "Commercial & Industrial (Standalone)",
@@ -229,7 +251,9 @@ window.LCOSReports = [
         "low": 829,
         "high": 1152,
         "page": 11,
-        "pdfPage": 19
+        "pdfPage": 19,
+        "chartSlot": "commercial",
+        "chartDetail": "1 MW · 2 h"
       },
       {
         "name": "Commercial & Industrial (PV + Storage)",
@@ -238,7 +262,9 @@ window.LCOSReports = [
         "low": 315,
         "high": 366,
         "page": 11,
-        "pdfPage": 19
+        "pdfPage": 19,
+        "chartSlot": "commercialSolar",
+        "chartDetail": "0.5 MW · 4 h"
       },
       {
         "name": "Residential (PV + Storage)",
@@ -247,7 +273,9 @@ window.LCOSReports = [
         "low": 476,
         "high": 735,
         "page": 11,
-        "pdfPage": 19
+        "pdfPage": 19,
+        "chartSlot": "residentialSolar",
+        "chartDetail": "10 kW · 4 h"
       }
     ]
   },
@@ -267,7 +295,9 @@ window.LCOSReports = [
         "low": 189,
         "high": 325,
         "page": 4,
-        "pdfPage": 8
+        "pdfPage": 8,
+        "chartSlot": "utility1",
+        "chartDetail": "100 MW"
       },
       {
         "name": "Wholesale standalone (2 hours)",
@@ -276,7 +306,9 @@ window.LCOSReports = [
         "low": 173,
         "high": 315,
         "page": 4,
-        "pdfPage": 8
+        "pdfPage": 8,
+        "chartSlot": "utility2",
+        "chartDetail": "100 MW"
       },
       {
         "name": "Wholesale standalone (4 hours)",
@@ -285,7 +317,9 @@ window.LCOSReports = [
         "low": 165,
         "high": 305,
         "page": 4,
-        "pdfPage": 8
+        "pdfPage": 8,
+        "chartSlot": "utility4",
+        "chartDetail": "100 MW"
       },
       {
         "name": "Transmission and distribution",
@@ -295,7 +329,9 @@ window.LCOSReports = [
         "high": 3989,
         "page": 4,
         "pdfPage": 8,
-        "lowCycle": true
+        "lowCycle": true,
+        "chartSlot": "lowCycle",
+        "chartDetail": "10 MW · 6 h"
       },
       {
         "name": "Wholesale (PV + storage)",
@@ -304,7 +340,9 @@ window.LCOSReports = [
         "low": 102,
         "high": 139,
         "page": 4,
-        "pdfPage": 8
+        "pdfPage": 8,
+        "chartSlot": "utilitySolar",
+        "chartDetail": "50 MW · 4 h"
       },
       {
         "name": "Commercial and industrial standalone",
@@ -313,7 +351,9 @@ window.LCOSReports = [
         "low": 485,
         "high": 1042,
         "page": 4,
-        "pdfPage": 8
+        "pdfPage": 8,
+        "chartSlot": "commercial",
+        "chartDetail": "1 MW · 2 h"
       },
       {
         "name": "Commercial and industrial (PV + storage)",
@@ -322,7 +362,9 @@ window.LCOSReports = [
         "low": 223,
         "high": 384,
         "page": 4,
-        "pdfPage": 8
+        "pdfPage": 8,
+        "chartSlot": "commercialSolar",
+        "chartDetail": "0.5 MW · 4 h"
       },
       {
         "name": "Residential (PV + storage)",
@@ -331,7 +373,9 @@ window.LCOSReports = [
         "low": 457,
         "high": 663,
         "page": 4,
-        "pdfPage": 8
+        "pdfPage": 8,
+        "chartSlot": "residentialSolar",
+        "chartDetail": "6 kW · 4 h"
       }
     ]
   },
@@ -351,7 +395,9 @@ window.LCOSReports = [
         "low": 158,
         "high": 250,
         "page": 6,
-        "pdfPage": 10
+        "pdfPage": 10,
+        "chartSlot": "utility1",
+        "chartDetail": "100 MW"
       },
       {
         "name": "Wholesale standalone (2 hours)",
@@ -360,7 +406,9 @@ window.LCOSReports = [
         "low": 140,
         "high": 243,
         "page": 6,
-        "pdfPage": 10
+        "pdfPage": 10,
+        "chartSlot": "utility2",
+        "chartDetail": "100 MW"
       },
       {
         "name": "Wholesale standalone (4 hours)",
@@ -370,7 +418,9 @@ window.LCOSReports = [
         "high": 245,
         "page": 6,
         "pdfPage": 10,
-        "benchmark": true
+        "benchmark": true,
+        "chartSlot": "utility4",
+        "chartDetail": "100 MW"
       },
       {
         "name": "Transmission and distribution",
@@ -380,7 +430,9 @@ window.LCOSReports = [
         "high": 2771,
         "page": 6,
         "pdfPage": 10,
-        "lowCycle": true
+        "lowCycle": true,
+        "chartSlot": "lowCycle",
+        "chartDetail": "10 MW · 6 h"
       },
       {
         "name": "Wholesale (PV + storage)",
@@ -389,7 +441,9 @@ window.LCOSReports = [
         "low": 81,
         "high": 124,
         "page": 6,
-        "pdfPage": 10
+        "pdfPage": 10,
+        "chartSlot": "utilitySolar",
+        "chartDetail": "50 MW · 4 h"
       },
       {
         "name": "Commercial and industrial standalone",
@@ -398,7 +452,9 @@ window.LCOSReports = [
         "low": 432,
         "high": 590,
         "page": 6,
-        "pdfPage": 10
+        "pdfPage": 10,
+        "chartSlot": "commercial",
+        "chartDetail": "1 MW · 2 h"
       },
       {
         "name": "Commercial and industrial (PV + storage)",
@@ -407,7 +463,9 @@ window.LCOSReports = [
         "low": 247,
         "high": 319,
         "page": 6,
-        "pdfPage": 10
+        "pdfPage": 10,
+        "chartSlot": "commercialSolar",
+        "chartDetail": "0.5 MW · 4 h"
       },
       {
         "name": "Residential (PV + storage)",
@@ -416,7 +474,9 @@ window.LCOSReports = [
         "low": 406,
         "high": 506,
         "page": 6,
-        "pdfPage": 10
+        "pdfPage": 10,
+        "chartSlot": "residentialSolar",
+        "chartDetail": "6 kW · 4 h"
       }
     ]
   },
@@ -436,7 +496,9 @@ window.LCOSReports = [
         "low": 160,
         "high": 279,
         "page": 6,
-        "pdfPage": 10
+        "pdfPage": 10,
+        "chartSlot": "utility1",
+        "chartDetail": "100 MW"
       },
       {
         "name": "Wholesale standalone (2 hours)",
@@ -445,7 +507,9 @@ window.LCOSReports = [
         "low": 146,
         "high": 257,
         "page": 6,
-        "pdfPage": 10
+        "pdfPage": 10,
+        "chartSlot": "utility2",
+        "chartDetail": "100 MW"
       },
       {
         "name": "Wholesale standalone (4 hours)",
@@ -455,7 +519,9 @@ window.LCOSReports = [
         "high": 232,
         "page": 6,
         "pdfPage": 10,
-        "benchmark": true
+        "benchmark": true,
+        "chartSlot": "utility4",
+        "chartDetail": "100 MW"
       },
       {
         "name": "Transmission and distribution",
@@ -465,7 +531,9 @@ window.LCOSReports = [
         "high": 3034,
         "page": 6,
         "pdfPage": 10,
-        "lowCycle": true
+        "lowCycle": true,
+        "chartSlot": "lowCycle",
+        "chartDetail": "10 MW · 6 h"
       },
       {
         "name": "Wholesale (PV + storage)",
@@ -474,7 +542,9 @@ window.LCOSReports = [
         "low": 85,
         "high": 158,
         "page": 6,
-        "pdfPage": 10
+        "pdfPage": 10,
+        "chartSlot": "utilitySolar",
+        "chartDetail": "50 MW · 4 h"
       },
       {
         "name": "Commercial and industrial standalone",
@@ -483,7 +553,9 @@ window.LCOSReports = [
         "low": 442,
         "high": 643,
         "page": 6,
-        "pdfPage": 10
+        "pdfPage": 10,
+        "chartSlot": "commercial",
+        "chartDetail": "1 MW · 2 h"
       },
       {
         "name": "Commercial and industrial (PV + storage)",
@@ -492,7 +564,9 @@ window.LCOSReports = [
         "low": 235,
         "high": 335,
         "page": 6,
-        "pdfPage": 10
+        "pdfPage": 10,
+        "chartSlot": "commercialSolar",
+        "chartDetail": "0.5 MW · 4 h"
       },
       {
         "name": "Residential (PV + storage)",
@@ -501,7 +575,9 @@ window.LCOSReports = [
         "low": 416,
         "high": 621,
         "page": 6,
-        "pdfPage": 10
+        "pdfPage": 10,
+        "chartSlot": "residentialSolar",
+        "chartDetail": "6 kW · 4 h"
       }
     ]
   },
@@ -520,7 +596,9 @@ window.LCOSReports = [
         "low": 249,
         "high": 323,
         "page": 19,
-        "pdfPage": 23
+        "pdfPage": 23,
+        "chartSlot": "utility1",
+        "chartDetail": "100 MW"
       },
       {
         "name": "Utility-Scale Standalone",
@@ -528,7 +606,9 @@ window.LCOSReports = [
         "low": 215,
         "high": 285,
         "page": 19,
-        "pdfPage": 23
+        "pdfPage": 23,
+        "chartSlot": "utility2",
+        "chartDetail": "100 MW"
       },
       {
         "name": "Utility-Scale Standalone",
@@ -537,7 +617,9 @@ window.LCOSReports = [
         "high": 257,
         "page": 19,
         "pdfPage": 23,
-        "benchmark": true
+        "benchmark": true,
+        "chartSlot": "utility4",
+        "chartDetail": "100 MW"
       },
       {
         "name": "Utility-Scale PV + Storage",
@@ -545,7 +627,9 @@ window.LCOSReports = [
         "low": 110,
         "high": 131,
         "page": 19,
-        "pdfPage": 23
+        "pdfPage": 23,
+        "chartSlot": "utilitySolar",
+        "chartDetail": "50 MW · 4 h"
       },
       {
         "name": "Utility-Scale Wind + Storage",
@@ -553,7 +637,9 @@ window.LCOSReports = [
         "low": 69,
         "high": 79,
         "page": 19,
-        "pdfPage": 23
+        "pdfPage": 23,
+        "chartSlot": "utilityWind",
+        "chartDetail": "50 MW · 4 h"
       },
       {
         "name": "C&I Standalone",
@@ -561,7 +647,9 @@ window.LCOSReports = [
         "low": 407,
         "high": 448,
         "page": 19,
-        "pdfPage": 23
+        "pdfPage": 23,
+        "chartSlot": "commercial",
+        "chartDetail": "1 MW · 2 h"
       },
       {
         "name": "C&I PV + Storage",
@@ -569,7 +657,9 @@ window.LCOSReports = [
         "low": 225,
         "high": 241,
         "page": 19,
-        "pdfPage": 23
+        "pdfPage": 23,
+        "chartSlot": "commercialSolar",
+        "chartDetail": "0.5 MW · 4 h"
       },
       {
         "name": "Residential Standalone",
@@ -577,7 +667,9 @@ window.LCOSReports = [
         "low": 1215,
         "high": 1348,
         "page": 19,
-        "pdfPage": 23
+        "pdfPage": 23,
+        "chartSlot": "residential",
+        "chartDetail": "6 kW · 4 h"
       },
       {
         "name": "Residential PV + Storage",
@@ -585,7 +677,9 @@ window.LCOSReports = [
         "low": 663,
         "high": 730,
         "page": 19,
-        "pdfPage": 23
+        "pdfPage": 23,
+        "chartSlot": "residentialSolar",
+        "chartDetail": "6 kW · 4 h"
       }
     ]
   },
@@ -604,7 +698,9 @@ window.LCOSReports = [
         "low": 222,
         "high": 352,
         "page": 20,
-        "pdfPage": 20
+        "pdfPage": 20,
+        "chartSlot": "utility1",
+        "chartDetail": "100 MW"
       },
       {
         "name": "Utility-Scale Standalone",
@@ -612,7 +708,9 @@ window.LCOSReports = [
         "low": 188,
         "high": 322,
         "page": 20,
-        "pdfPage": 20
+        "pdfPage": 20,
+        "chartSlot": "utility2",
+        "chartDetail": "100 MW"
       },
       {
         "name": "Utility-Scale Standalone",
@@ -621,7 +719,9 @@ window.LCOSReports = [
         "high": 296,
         "page": 20,
         "pdfPage": 20,
-        "benchmark": true
+        "benchmark": true,
+        "chartSlot": "utility4",
+        "chartDetail": "100 MW"
       },
       {
         "name": "C&I Standalone",
@@ -629,7 +729,9 @@ window.LCOSReports = [
         "low": 373,
         "high": 518,
         "page": 20,
-        "pdfPage": 20
+        "pdfPage": 20,
+        "chartSlot": "commercial",
+        "chartDetail": "1 MW · 2 h"
       },
       {
         "name": "Residential Standalone",
@@ -637,7 +739,9 @@ window.LCOSReports = [
         "low": 882,
         "high": 1101,
         "page": 20,
-        "pdfPage": 20
+        "pdfPage": 20,
+        "chartSlot": "residential",
+        "chartDetail": "6 kW · 4 h"
       }
     ]
   },
@@ -656,7 +760,9 @@ window.LCOSReports = [
         "low": 129,
         "high": 277,
         "page": 19,
-        "pdfPage": 19
+        "pdfPage": 19,
+        "chartSlot": "utility2",
+        "chartDetail": "100 MW"
       },
       {
         "name": "Utility-Scale Standalone",
@@ -665,7 +771,9 @@ window.LCOSReports = [
         "high": 254,
         "page": 19,
         "pdfPage": 19,
-        "benchmark": true
+        "benchmark": true,
+        "chartSlot": "utility4",
+        "chartDetail": "100 MW"
       },
       {
         "name": "C&I Standalone",
@@ -673,7 +781,9 @@ window.LCOSReports = [
         "low": 319,
         "high": 506,
         "page": 19,
-        "pdfPage": 19
+        "pdfPage": 19,
+        "chartSlot": "commercial",
+        "chartDetail": "1 MW · 2 h"
       },
       {
         "name": "Residential Standalone",
@@ -681,7 +791,9 @@ window.LCOSReports = [
         "low": 547,
         "high": 860,
         "page": 19,
-        "pdfPage": 19
+        "pdfPage": 19,
+        "chartSlot": "residential",
+        "chartDetail": "6 kW · 4 h"
       }
     ]
   },
@@ -700,7 +812,9 @@ window.LCOSReports = [
         "low": 215,
         "high": 414,
         "page": 21,
-        "pdfPage": 21
+        "pdfPage": 21,
+        "chartSlot": "utility2",
+        "chartDetail": "100 MW"
       },
       {
         "name": "Utility-Scale Standalone",
@@ -709,7 +823,9 @@ window.LCOSReports = [
         "high": 292,
         "page": 21,
         "pdfPage": 21,
-        "benchmark": true
+        "benchmark": true,
+        "chartSlot": "utility4",
+        "chartDetail": "100 MW"
       }
     ]
   }
